@@ -2,6 +2,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../db"); 
 const usuario = require('./usuarios'); 
+const estados = require('./estados'); 
 
 
 const Tareas = sequelize.define("Tareas", {
@@ -38,6 +39,13 @@ const Tareas = sequelize.define("Tareas", {
     type: DataTypes.INTEGER,
     references: {
         model:usuario,
+        key:"id",
+    }
+  },
+  idEstados: {
+    type: DataTypes.INTEGER,
+    references: {
+        model:estados,
         key:"id",
     }
   }

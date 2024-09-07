@@ -1,22 +1,35 @@
 
 const express = require("express");
 const router = express.Router(); // creo el objeto de tipo router
-const tareas = require('../models/tareas');
+const tasks = require('../models/tareas');
 
-router.get("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.get("/", async (req, res) => {
+    const taskId = req.params.id;
+    if(taskId){
+        const result = await tasks.findByPk(taskId);
+        res.status(200).json(result);
+    }
+    res.status(404).json({error:"ERROR! No se encontro id"});
 });
-router.get("/get-all", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.get("/get-all", async (req, res)=>{
+    const tareas = await tasks.findAll();
+    res.json(tareas);
 });
-router.delete("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.delete("/", async (req, res) => {
+    const taskId = req.params.id;
+    if(taskId){
+        await tasks.destroy({where:{id:taskId}});
+        res.status(200).json({message: "Se elimino con exito el id: " + taskId});
+    }
+    res.status(404).json({error:"ERROR! No se encontro id"});
 });
-router.put("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.put("/", async (req, res) => {
+    const tareas = await tasks.findAll();
+    res.json(tareas);
 });
-router.post("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.post("/", async (req, res) => {
+    const tareas = await tasks.findAll();
+    res.json(tareas);
 });
 
 module.exports = router;

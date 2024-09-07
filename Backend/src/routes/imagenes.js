@@ -1,22 +1,35 @@
 
 const express = require("express");
 const router = express.Router(); // creo el objeto de tipo router
-const imagenes = require('../models/imagenes');
+const images = require('../models/imagenes');
 
-router.get("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.get("/", async (req, res) => {
+    const imageId = req.params.id;
+    if(imageId){
+        const result = await images.findByPk(imageId);
+        res.status(200).json(result);
+    }
+    res.status(404).json({error:"ERROR! No se encontro id"});
 });
-router.get("/get-all", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.get("/get-all", async (req, res)=>{
+    const imagenes = await images.findAll();
+    res.json(imagenes);
 });
-router.delete("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.delete("/", async (req, res) => {
+    const imageId = req.params.id;
+    if(imageId){
+        await images.destroy({where:{id:imageId}});
+        res.status(200).json({message: "Se elimino con exito el id: " + imageId});
+    }
+    res.status(404).json({error:"ERROR! No se encontro id"});
 });
-router.put("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.put("/", async (req, res) => {
+    const imagenes = await images.findAll();
+    res.json(imagenes);
 });
-router.post("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.post("/", async (req, res) => {
+    const imagenes = await images.findAll();
+    res.json(imagenes);
 });
 
 module.exports = router;

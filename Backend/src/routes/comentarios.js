@@ -1,22 +1,35 @@
 
 const express = require("express");
 const router = express.Router(); // creo el objeto de tipo router
-const comentarios = require('../models/comentarios');
+const comments = require('../models/comentarios');
 
-router.get("/", (req, res) => {
-    res.json({ message: "Hola respondo " });
+router.get("/", async (req, res) => {
+    const commentId = req.params.id;
+    if(commentId){
+        const result = await comments.findByPk(commentId);
+        res.status(200).json(result);
+    }
+    res.status(404).json({error:"ERROR! No se encontro id"});
 });
-router.get("/get-all", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.get("/get-all", async (req, res)=>{
+    const comentarios = await comments.findAll();
+    res.json(comentarios);
 });
-router.delete("/", (req, res) => {
-    res.json({ message: "Hola mi amor" });
+router.delete("/", async (req, res) => {
+    const commentId = req.params.id;
+    if(commentId){
+        await comments.destroy({where:{id:commentId}});
+        res.status(200).json({message: "Se elimino con exito el id: " + commentId});
+    }
+    res.status(404).json({error:"ERROR! No se encontro id"});
 });
-router.put("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.put("/", async (req, res) => {
+    const comentarios = await comments.findAll();
+    res.json(comentarios);
 });
-router.post("/", (req, res) => {
-    res.json({ message: "Hola desde el servidor!" });
+router.post("/", async (req, res) => {
+    const comentarios = await comments.findAll();
+    res.json(comentarios);
 });
 
 module.exports = router;
