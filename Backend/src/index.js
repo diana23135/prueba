@@ -5,11 +5,16 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+app.use(express.json());
+require('./db');
+
+//definir la ruta a los endpoints
 const tareas = require("./routes/tareas");
 const comentarios = require("./routes/comentarios");
 const imagenes = require("./routes/imagenes");
 const usuarios = require("./routes/usuarios");
 const estados = require("./routes/estados");
+
 app.use("/tareas",tareas);
 app.use("/comentarios",comentarios);
 app.use("/imagenes",imagenes);

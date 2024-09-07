@@ -2,6 +2,8 @@
 const express = require("express");
 const router = express.Router(); // creo el objeto de tipo router
 const user = require('../models/usuarios');
+const validateDto = require('../middlewares/validateDto');
+const {userDto} = require('../dtos/dtos');
 
 router.get("/", async (req, res) => {
     const userId = req.params.id;
@@ -30,9 +32,18 @@ router.put("/", async(req, res) => {
     }
     res.status(404).json({error:"ERROR! No se encontro body"});
 });
-router.post("/", async (req, res) => {
-    const body = req.body; 
-    res.json();
+router.post("/", validateDto(userDto), async (req, res) => {
+    const body = req.body;
+    if (body) {
+        try {
+          await user.create(body);
+          res
+            .status(200)
+            .json({ message: "se ha registrado con exito el usuario" });
+        } catch (error) {
+          res.status(505).json({ error: "no se ha podido registrar: " + error });
+        }
+      }
 });
 
 module.exports = router;

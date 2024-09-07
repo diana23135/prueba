@@ -1,6 +1,6 @@
 // models/Comentarios.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../db"); 
+const sequelize = require("./sequelize"); 
 const tareas = require('./tareas'); 
 
 
@@ -8,7 +8,7 @@ const Comentarios = sequelize.define("Comentarios", {
 
   id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    autoIncrement: true,
     unique: true,
     primaryKey: true, // Agregado para definir 'id' como clave primaria
   },

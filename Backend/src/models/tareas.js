@@ -1,6 +1,6 @@
 // models/Tareas.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../db"); 
+const sequelize = require("./sequelize"); 
 const usuario = require('./usuarios'); 
 const estados = require('./estados'); 
 
@@ -9,7 +9,7 @@ const Tareas = sequelize.define("Tareas", {
 
   id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    autoIncrement: true,
     unique: true,
     primaryKey: true, // Agregado para definir 'id' como clave primaria
   },
@@ -20,11 +20,6 @@ const Tareas = sequelize.define("Tareas", {
   descripcion: {
     type: DataTypes.TEXT,
     allowNull: true,
-  },
-  estado: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: "pendiente", // Valor predeterminado
   },
   fechaCreacion: {
     type: DataTypes.DATE,
@@ -44,6 +39,7 @@ const Tareas = sequelize.define("Tareas", {
   },
   idEstados: {
     type: DataTypes.INTEGER,
+    defaultValue: 1,
     references: {
         model:estados,
         key:"id",

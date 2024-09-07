@@ -1,12 +1,12 @@
 // models/Estados.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../db"); 
+const sequelize = require("./sequelize"); 
 
 const Estados = sequelize.define("Estados", {
 
   id: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
     unique: true,
     primaryKey: true, // Agregado para definir 'id' como clave primaria
   },

@@ -2,6 +2,8 @@
 const express = require("express");
 const router = express.Router(); // creo el objeto de tipo router
 const tasks = require('../models/tareas');
+const validateDto = require('../middlewares/validateDto');
+const {taskDto} = require('../dtos/dtos');
 
 router.get("/", async (req, res) => {
     const taskId = req.params.id;
@@ -27,9 +29,18 @@ router.put("/", async (req, res) => {
     const tareas = await tasks.findAll();
     res.json(tareas);
 });
-router.post("/", async (req, res) => {
-    const tareas = await tasks.findAll();
-    res.json(tareas);
+router.post("/", validateDto(taskDto), async (req, res) => {
+    const body = req.body;
+    if (body) {
+        try {
+          await tasks.create(body);
+          res
+            .status(200)
+            .json({ message: "se ha registrado con exito la tarea" });
+        } catch (error) {
+          res.status(505).json({ error: "no se ha podido registrar: " + error });
+        }
+      }
 });
 
 module.exports = router;

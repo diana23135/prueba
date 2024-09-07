@@ -1,4 +1,5 @@
-
+const validateDto = require('../middlewares/validateDto');
+const {commentDto} = require('../dtos/dtos');
 const express = require("express");
 const router = express.Router(); // creo el objeto de tipo router
 const comments = require('../models/comentarios');
@@ -27,9 +28,18 @@ router.put("/", async (req, res) => {
     const comentarios = await comments.findAll();
     res.json(comentarios);
 });
-router.post("/", async (req, res) => {
-    const comentarios = await comments.findAll();
-    res.json(comentarios);
+router.post("/", validateDto(commentDto), async (req, res) => {
+    const body = req.body;
+    if (body) {
+        try {
+          await comments.create(body);
+          res
+            .status(200)
+            .json({ message: "se ha registrado con exito el comentario" });
+        } catch (error) {
+          res.status(505).json({ error: "no se ha podido registrar: " + error });
+        }
+      }
 });
 
 module.exports = router;
