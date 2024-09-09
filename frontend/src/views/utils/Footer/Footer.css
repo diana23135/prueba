@@ -1,0 +1,47 @@
+footer {
+    position: relative; 
+    bottom: 0; 
+    width: 100%; 
+    background-color: #f2f2f2; 
+    text-align: center; 
+  }
+.main-footer{
+    display: flex;
+    gap: 2rem;
+    justify-content: center; 
+    align-items: center;
+}
+.logo-img {
+    width: 200px;
+    height: auto;
+}
+.textcenter {
+    color :#475569;
+    text-align: center; /* Centrar el texto */
+  }
+.textcenter span {
+display: block; /* Cada span ocupa su propia línea */
+ /* Espacio entre líneas */
+}
+
+
+.social-network a {
+    color :#475569; /* Color de los enlaces de redes sociales */
+    text-decoration: none; /* Quitar subrayado */
+    transition: color 0.3s ease; /* Transición suave del color al pasar sobre los enlaces */
+    font-size: 30px; /* Tamaño de fuente para los iconos */
+  }
+  .social-network a:hover {
+    color: #0a293d; /* Cambiar el color al pasar sobre los enlaces */
+  }
+
+  @media screen and (max-width: 500px) {
+    .main-footer {
+      flex-wrap:wrap;
+      
+  
+    }
+  
+  
+  }
+  

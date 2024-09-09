@@ -1,0 +1,35 @@
+.nav-content {
+    background-color: rgba(12, 12, 56, 0.849);
+    padding: 1rem; /* Añade un poco de padding para mejorar el espaciado */
+  }
+  
+  .elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos */
+  }
+  
+  .icon img {
+    display: block; /* Elimina el espacio blanco debajo de la imagen */
+  }
+  
+  ul {
+    list-style: none; /* Elimina los puntos de lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Muestra los elementos de lista en fila */
+  }
+  
+  ul li {
+    margin-left: 1rem; /* Espacio entre los elementos de lista */
+  }
+  
+  ul li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: rgb(255, 255, 255); /* Cambia el color del texto según el diseño */
+  }
+  
+  ul li a:hover {
+    text-decoration: underline; /* Agrega un subrayado al pasar el mouse */
+  }
+  

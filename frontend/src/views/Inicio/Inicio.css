@@ -1,0 +1,68 @@
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Títulos */
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Estilo del formulario */
+  #task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #task-form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  #task-form input,
+  #task-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  #task-form textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  #task-form input[type="date"] {
+    padding: 8px;
+  }
+  
+  #task-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  #task-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  #task-form button:focus {
+    outline: none;
+  }
+  

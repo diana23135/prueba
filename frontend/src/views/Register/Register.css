@@ -1,0 +1,18 @@
+.success-message {
+    color: green;
+    margin-bottom: 15px;
+  }
+  
+  .register-link {
+    margin-top: 15px;
+  }
+  
+  .register-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  

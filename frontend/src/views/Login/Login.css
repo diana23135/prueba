@@ -1,0 +1,69 @@
+.login-container {
+  font-family: 'Arial', sans-serif; /* Aplica la fuente Arial a todo el contenedor */
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 200px;
+  height: auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Aplica Arial a los encabezados */
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif; /* Aplica Arial a las etiquetas */
+}
+
+.input-group input {
+  font-family: 'Arial', sans-serif; /* Aplica Arial a los campos de texto */
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  font-family: 'Arial', sans-serif; /* Aplica Arial a los botones */
+  width: 60%;
+  padding: 10px;
+  background-color: #007bff !important; /* Azul constante */
+  color: white !important; /* Texto blanco */
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold; /* Hace el texto más visible */
+}
+
+button:hover {
+  background-color: #007bff; /* Mantiene el mismo azul al pasar el mouse */
+}
+
+button:focus {
+  outline: none; /* Elimina el contorno azul predeterminado al hacer clic */
+}
+
+.error-message {
+  font-family: 'Arial', sans-serif; /* Aplica Arial a los mensajes de error */
+  color: red;
+  margin-bottom: 15px;
+}

@@ -1,24 +1,21 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+import { Login } from './views/Login/Login';
+import { Register } from './views/Register/Register'; // Asegúrate de que la ruta sea correcta
+import { Inicio } from './views/Inicio/Inicio';
 
 function App() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch("/comentarios/get-all")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then((data) => setData(data.message))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
   return (
-    <>
-    <div>{data}</div>
-    </>
-  )
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/inicio" element={<Inicio/>}/>
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
