@@ -6,7 +6,7 @@ const validateDto = require('../middlewares/validateDto');
 const {stateDto} = require('../dtos/dtos');
 
 router.get("/", async (req, res) => {
-    const imageId = req.params.id;
+    const imageId = req.query.id;
     if(imageId){
         const result = await states.findByPk(imageId);
         res.status(200).json(result);
@@ -18,7 +18,7 @@ router.get("/get-all", async (req, res)=>{
     res.json(estados);
 });
 router.delete("/", async (req, res) => {
-    const stateId = req.params.id;
+    const stateId = req.query.id;
     if(stateId){
         await states.destroy({where:{id:stateId}});
         res.status(200).json({message: "Se elimino con exito el id: " + stateId});

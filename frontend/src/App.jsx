@@ -5,8 +5,10 @@ import { Register } from "./views/Register/Register"; // Asegúrate de que la ru
 import { Inicio } from "./views/Inicio/Inicio";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./views/Protected/Protected";
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('userId');
   return (
     <>
       <ToastContainer />
@@ -15,7 +17,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route element={<ProtectedRoute condition={isAuthenticated} redirectTo="/" />}>
             <Route path="/inicio" element={<Inicio />} />
+            </Route>
           </Routes>
         </div>
       </Router>

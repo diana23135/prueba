@@ -9,7 +9,7 @@ const {loginDto} = require('../dtos/dtos');
 
 
 router.get("/", async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.query.id;
     if(userId){
         const result = await user.findByPk(userId);
         res.status(200).json(result);
@@ -21,7 +21,7 @@ router.get("/get-all", async (req, res) => {
     res.json(usuarios);
 });
 router.delete("/", async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.query.id;
     if(userId){
         await user.destroy({where:{id:userId}});
         res.status(200).json({message: "Se elimino con exito el id: " + userId});

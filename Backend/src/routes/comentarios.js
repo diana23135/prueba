@@ -5,7 +5,7 @@ const router = express.Router(); // creo el objeto de tipo router
 const comments = require('../models/comentarios');
 
 router.get("/", async (req, res) => {
-    const commentId = req.params.id;
+    const commentId = req.query.id;
     if(commentId){
         const result = await comments.findByPk(commentId);
         res.status(200).json(result);
@@ -17,7 +17,7 @@ router.get("/get-all", async (req, res)=>{
     res.json(comentarios);
 });
 router.delete("/", async (req, res) => {
-    const commentId = req.params.id;
+    const commentId = req.query.id;
     if(commentId){
         await comments.destroy({where:{id:commentId}});
         res.status(200).json({message: "Se elimino con exito el id: " + commentId});

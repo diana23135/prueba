@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Login.css";
 import { useValidation } from "../../hooks/useValidation";
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 export function Login() {
     const [form, setForm] = useState(null);
+    const [isLoggedIn, setLoggedIn] = useState(null);
+    const navigate = useNavigate();
+    
+    
+    useEffect(()=>{
+      
+    },[isLoggedIn]);
+    
     const { errors,  validationForm } = useValidation();
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -27,8 +36,14 @@ export function Login() {
             
             if (data.id){
               console.log(data);
-              localStorage.setItem('myData', JSON.stringify(data));
+              const user = JSON.stringify(data);
+              console.log(user)
+              localStorage.setItem('myData', user);
+              localStorage.setItem('userId', data.id)
               toast.done("autenticado con exito");
+              setLoggedIn(true);
+              navigate('/inicio');
+              
             
           }
           else {

@@ -17,7 +17,7 @@ const userDto = {
   };
   
   const taskDto = {
-    requiredFields: ["nombre", "estado","idUsuario"],
+    requiredFields: ["nombre", "descripcion", "idUsuario"],
   };
   
   

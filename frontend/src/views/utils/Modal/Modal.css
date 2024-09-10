@@ -1,0 +1,72 @@
+/* Estilos generales del modal */
+.modal-container {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: white;
+  width: 25em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  gap: 2rem; /* Añade sombra para más profundidad */
+}
+
+/* Estilos para los inputs dentro del modal */
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"],
+.modal select,
+.modal textarea {
+  width: 100%; /* Hace que el input se extienda a todo el ancho del modal */
+  padding: 0.75rem; /* Añade espacio interno */
+  margin-bottom: 1rem; /* Espacio entre inputs */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de fuente */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.modal input[type="text"]:focus,
+.modal input[type="email"]:focus,
+.modal input[type="password"]:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: #007bff; /* Color del borde al enfocar el input */
+  outline: none; /* Elimina el borde predeterminado de enfoque en algunos navegadores */
+}
+
+/* Estilos para los botones dentro del modal */
+.modal .btn {
+  display: block;
+  margin: auto;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff; /* Color de fondo del botón */
+  border: none;
+  border-radius: 4px; /* Bordes redondeados para el botón */
+  cursor: pointer;
+}
+
+.modal .btn:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+/* Opcional: Agregar margen adicional al último input */
+.modal input[type="text"]:last-child,
+.modal input[type="email"]:last-child,
+.modal input[type="password"]:last-child,
+.modal select:last-child,
+.modal textarea:last-child {
+  margin-bottom: 0; /* Elimina el margen inferior en el último input */
+}

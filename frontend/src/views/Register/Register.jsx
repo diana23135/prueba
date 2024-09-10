@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 import { useValidation } from "../../hooks/useValidation";
 
 export function Register() {
+  const navigate = useNavigate();
   const [form, setFormState] = useState({
     nombreUsuario:"",
     correo:"",
@@ -30,7 +31,7 @@ export function Register() {
       body: JSON.stringify(form),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => navigate('/'))
       .catch((error) => 
        
         
