@@ -1,88 +1,105 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "./Register.css";
+import { useValidation } from "../../hooks/useValidation";
 
 export function Register() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [form, setFormState] = useState({
+    nombreUsuario:"",
+    correo:"",
+    contraseña :"",
+    'confirm-password':""});
+  
+    const { errors,  validationForm } = useValidation();
+ 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((form) => ({
+      ...form,
+      [name]: value,
+    }));
+  };
 
-  function handleRegister(e) {
+  const onSubmit = (form) => {
+    fetch("http://localhost:3001/usuarios/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Especifica el tipo de contenido para JSON
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => 
+       
+        
+        console.log(error));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validar contraseñas coincidentes
-    if (password !== confirmPassword) {
-      setErrorMessage("Las contraseñas no coinciden");
+    if (!validationForm(form)) {
+      console.log("ff");
       return;
     }
-
-    // Aquí puedes agregar la lógica para enviar los datos al backend
-    setSuccessMessage("Registro exitoso");
-    setErrorMessage(null);
-  }
+    onSubmit(form);
+  };
 
   return (
     <div className="login-container">
       <img id="logo" src=".\src\assets\imgs\eccargo.png"></img>
       <h2>Registro</h2>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="username">Nombre de Usuario</label>
           <input
+            name="nombreUsuario"
             type="text"
             id="username"
             placeholder="Ingrese su nombre de usuario"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
+            onChange={handleChange}
+            
           />
         </div>
 
         <div className="input-group">
           <label htmlFor="email">Correo Electrónico</label>
           <input
+            name="correo"
             type="email"
             id="email"
             placeholder="Ingrese su correo electrónico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            onChange={handleChange}
+            
           />
         </div>
 
         <div className="input-group">
           <label htmlFor="password">Contraseña</label>
           <input
+            name="contraseña"
             type="password"
             id="password"
             placeholder="Ingrese su contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            onChange={handleChange}
+            
           />
         </div>
 
         <div className="input-group">
           <label htmlFor="confirm-password">Confirmar Contraseña</label>
           <input
+            name="confirm-password"
             type="password"
             id="confirm-password"
             placeholder="Confirme su contraseña"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
+            onChange={handleChange}
+            
           />
         </div>
 
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-        {successMessage && (
-          <div className="success-message">{successMessage}</div>
-        )}
-
-        <button type="submit">Registrarse</button>
+        <button className="button-register" type="submit">Registrarse</button>
 
         <div className="register-link">
           <p>

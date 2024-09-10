@@ -4,3 +4,30 @@ html, body {
     padding: 0%;
     font-family: Arial, sans-serif;
 }
+
+
+button {
+    font-family: 'Arial', sans-serif; /* Aplica Arial a los botones */
+    width: 60%;
+    padding: 10px;
+    background-color: #007bff ; /* Azul constante */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold; /* Hace el texto más visible */
+    transition: background-color 0.3s ease; /* Suaviza la transición de color */
+}
+
+button:active {
+    background-color: #245b96; /* Azul constante al hacer clic */
+}
+
+button:hover {
+    background-color: #2a6fb8;
+   
+}
+
+  
+  

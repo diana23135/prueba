@@ -5,6 +5,9 @@ const user = require('../models/usuarios');
 const validateDto = require('../middlewares/validateDto');
 const {userDto} = require('../dtos/dtos');
 
+const {loginDto} = require('../dtos/dtos');
+
+
 router.get("/", async (req, res) => {
     const userId = req.params.id;
     if(userId){
@@ -36,6 +39,12 @@ router.post("/", validateDto(userDto), async (req, res) => {
     const body = req.body;
     if (body) {
         try {
+        const email = body.correo;
+          const usuario = await user.findOne({ where: { correo: email } });
+
+          if (usuario) {
+              return res.status(401).json({ error: "Usuario ya esta registrado" });
+          }
           await user.create(body);
           res
             .status(200)
@@ -45,5 +54,38 @@ router.post("/", validateDto(userDto), async (req, res) => {
         }
       }
 });
+
+
+router.post("/login", validateDto(loginDto), async (req, res) => {
+    const body = req.body;
+    if (!body) {
+        return res.status(404).json({ error: "no se ha encontrado un body" });
+    }
+
+    const email = body.correo;
+    const pass = body.contraseña;
+
+    try {
+        // Aquí se busca el usuario solo por correo
+        const usuario = await user.findOne({ where: { correo: email } });
+
+        if (!usuario) {
+            return res.status(401).json({ error: "Usuario no encontrado" });
+        }
+
+        // Aquí puedes hacer la verificación de la contraseña con bcrypt, si usas hash:
+        // const isPasswordValid = await bcrypt.compare(pass, usuario.contraseña);
+        const isPasswordValid = (usuario.contraseña === pass); // En caso de que no uses hashing
+
+        if (isPasswordValid) {
+            return res.status(202).json(usuario);
+        } else {
+            return res.status(401).json({ error: "no se ha podido autenticar" });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: "no se ha podido conectar con el servidor: " + error });
+    }
+});
+
 
 module.exports = router;

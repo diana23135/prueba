@@ -1,6 +1,10 @@
 const userDto = {
     requiredFields: ["nombreUsuario", "correo", "contraseña"],
   };
+  const loginDto = {
+    requiredFields: ["correo", "contraseña"],
+  };
+
   const stateDto = {
     requiredFields: ["nombreEstados"],
   };
@@ -17,4 +21,4 @@ const userDto = {
   };
   
   
-  module.exports = { userDto, stateDto, commentDto, imageDto, taskDto };
+  module.exports = { userDto, stateDto, commentDto, imageDto, taskDto, loginDto };

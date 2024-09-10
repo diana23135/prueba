@@ -41,26 +41,6 @@ h2 {
   border-radius: 4px;
 }
 
-button {
-  font-family: 'Arial', sans-serif; /* Aplica Arial a los botones */
-  width: 60%;
-  padding: 10px;
-  background-color: #007bff !important; /* Azul constante */
-  color: white !important; /* Texto blanco */
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: bold; /* Hace el texto más visible */
-}
-
-button:hover {
-  background-color: #007bff; /* Mantiene el mismo azul al pasar el mouse */
-}
-
-button:focus {
-  outline: none; /* Elimina el contorno azul predeterminado al hacer clic */
-}
 
 .error-message {
   font-family: 'Arial', sans-serif; /* Aplica Arial a los mensajes de error */
