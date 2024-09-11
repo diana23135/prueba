@@ -7,7 +7,7 @@ export const DateFormat = ({ isoDateString }) => {
         const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Los meses son base 0
         const year = date.getUTCFullYear();
         
-        console.log(isoDateString)
+        
         return `${day}/${month}/${year}`;
     };
 

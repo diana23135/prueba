@@ -36,12 +36,15 @@ export function Modal({ onSubmitForm, defaultValue, closeModal }) {
       }}
     >
       <div className="modal">
+        <h1>Insertar datos</h1>
         <form onSubmit={handleSubmit}>
           {Object.keys(formState).map((key) => (
+            key === 'id' || key === 'idEstados' ? null : 
+            
             <div className="form-group" key={key}>
               <label htmlFor={key}>{key}</label>
               <input
-                type="text"
+                type={key === 'fechaFinalizacion' ? "date" :"text"}
                 id={key}
                 name={key}
                 onChange={handleChange}

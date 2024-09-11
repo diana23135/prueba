@@ -25,6 +25,7 @@
 .modal input[type="text"],
 .modal input[type="email"],
 .modal input[type="password"],
+.modal input[type="date"], 
 .modal select,
 .modal textarea {
   width: 100%; /* Hace que el input se extienda a todo el ancho del modal */
@@ -69,4 +70,7 @@
 .modal select:last-child,
 .modal textarea:last-child {
   margin-bottom: 0; /* Elimina el margen inferior en el último input */
+}
+.form-group{
+  margin: 10px;
 }

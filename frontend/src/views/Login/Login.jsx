@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import "./Login.css";
 import { useValidation } from "../../hooks/useValidation";
-import { toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
-export function Login() {
+import { useNavigate } from "react-router-dom";
+
+export function Login({onLogin}) {
     const [form, setForm] = useState(null);
-    const [isLoggedIn, setLoggedIn] = useState(null);
     const navigate = useNavigate();
-    
-    
-    useEffect(()=>{
-      
-    },[isLoggedIn]);
     
     const { errors,  validationForm } = useValidation();
     const handleChange = (e) => {
@@ -22,44 +16,7 @@ export function Login() {
       }));
     };
   
-    const onSubmit = (form) => {
-      fetch("http://localhost:3001/usuarios/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Especifica el tipo de contenido para JSON
-        },
-        body: JSON.stringify(form),
-      })
-      .then((response) => response.json())
-        .then((data) => 
-          {
-            
-            if (data.id){
-              console.log(data);
-              const user = JSON.stringify(data);
-              console.log(user)
-              localStorage.setItem('myData', user);
-              localStorage.setItem('userId', data.id)
-              toast.done("autenticado con exito");
-              setLoggedIn(true);
-              navigate('/inicio');
-              
-            
-          }
-          else {
-            throw new Error(data.error);
-          }
-        }
-          )
-        .catch((error) => {
-          console.log(error.message);
-          toast.error(error.message);
-        }
-         
-        
-        );
-    };
-
+   
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +24,7 @@ export function Login() {
       
       return;
     }
-    onSubmit(form);
+    onLogin(form, navigate);
   };
   return (
     <>

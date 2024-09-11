@@ -6,6 +6,7 @@ body {
 }
 
 .card {
+    min-width: 250px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -15,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    
     min-height: 200px; /* Asegura que las tarjetas tengan una altura mínima */
 }
 
@@ -33,16 +34,6 @@ body {
   justify-content: center;
   gap: 16px;
   padding: 16px;
-}
-
-.card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  max-width: 300px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
 }
 
 .card:hover {
@@ -82,20 +73,38 @@ body {
   border-radius: 4px;
 }
 
-.card-actions {
+
+
+.actions{
   display: flex;
-  gap: 8px;
+  justify-content: space-around;
+  gap: 20px;
+ 
+
 }
 
-.card-action-button {
-  background: none;
-  border: none;
+.actions svg {
   cursor: pointer;
-  font-size: 18px;
-  color: #333;
-  transition: color 0.3s;
+  
+} 
+.delete-btn {
+  color: #e10d05;
+  margin: 1px;
 }
 
-.card-action-button:hover {
-  color: #007bff;
+
+.actions .icon-btn {
+  font-size: 20px; /* Ajusta el tamaño del ícono */
+  color: #333; /* Color por defecto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+  transition: color 0.3s ease, transform 0.3s ease; /* Animación suave */
+}
+
+.actions .icon-btn:hover {
+  color: #007bff; /* Color al pasar el ratón (hover) */
+  transform: scale(1.2); /* Aumenta el tamaño al pasar el ratón */
+}
+
+.delete-btn:hover {
+  color: red; /* Cambia el color a rojo específicamente para el botón de eliminar */
 }

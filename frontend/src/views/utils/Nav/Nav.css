@@ -1,6 +1,8 @@
 .nav-content {
+    /* width: 100vw; */
     background-color: rgba(12, 12, 56, 0.849);
-    padding: 1rem; /* Añade un poco de padding para mejorar el espaciado */
+    padding: 1rem; 
+    
   }
   
   .elements {

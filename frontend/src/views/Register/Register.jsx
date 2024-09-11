@@ -31,7 +31,9 @@ export function Register() {
       body: JSON.stringify(form),
     })
       .then((response) => response.json())
-      .then((data) => navigate('/'))
+      .then((data) => {
+        toast.success(data.message);
+        navigate('/')})
       .catch((error) => 
        
         

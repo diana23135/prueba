@@ -13,12 +13,14 @@ const userDto = {
   };
   
   const imageDto = {
-    requiredFields: ["nombreImagen", "ruta", "idTarea", "fileBase64"],
+    requiredFields: ["nombreImagen", "idTarea", "fileBase64", "idUser"],
   };
-  
+  const imageEditDto = {
+    requiredFields: ["user_id", "task_id", "image_name", "fileBase64"],
+  };
   const taskDto = {
     requiredFields: ["nombre", "descripcion", "idUsuario"],
   };
   
   
-  module.exports = { userDto, stateDto, commentDto, imageDto, taskDto, loginDto };
+  module.exports = { userDto, stateDto, commentDto, imageDto, taskDto, loginDto, imageEditDto };
