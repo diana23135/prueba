@@ -21,4 +21,5 @@ module.exports = {
       host: 'postgresql-eccargo-test.alwaysdata.net',
       dialect: 'postgres', // Cambia esto según tu base de datos
     },
+    aws3BaseUrl : 'https://g33tysr3x7.execute-api.us-east-2.amazonaws.com/default/getImages',
   };

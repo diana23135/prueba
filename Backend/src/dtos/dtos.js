@@ -13,7 +13,7 @@ const userDto = {
   };
   
   const imageDto = {
-    requiredFields: ["nombreImagen", "ruta", "idTarea"],
+    requiredFields: ["nombreImagen", "ruta", "idTarea", "fileBase64"],
   };
   
   const taskDto = {
